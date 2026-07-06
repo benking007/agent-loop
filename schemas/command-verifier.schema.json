@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agent-loop/command-verifier.schema.json",
+  "title": "CommandVerifierConfig",
+  "type": "object",
+  "required": ["name", "criterionId", "command"],
+  "properties": {
+    "name": { "type": "string" },
+    "criterionId": { "type": "string" },
+    "command": { "type": "string" },
+    "args": { "type": "array", "items": { "type": "string" } },
+    "cwd": { "type": "string" },
+    "timeoutMs": { "type": "integer", "minimum": 1 },
+    "passStatus": { "enum": ["PASS", "WARNING"] },
+    "failStatus": { "enum": ["FAIL", "BLOCKED"] }
+  },
+  "additionalProperties": false
+}
+

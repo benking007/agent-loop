@@ -1,0 +1,31 @@
+{
+  "name": "agent-loop-runtime",
+  "version": "0.4.0",
+  "description": "Reusable Agent Loop runtime guardrails: skill, hooks, schemas, evidence ledger, result statuses, and verifier contracts.",
+  "skills": [
+    {
+      "name": "agent-loop",
+      "path": "skill/agent-loop"
+    }
+  ],
+  "hooks": {
+    "preToolUse": "hooks/pre-tool-use",
+    "postToolUse": "hooks/post-tool-use",
+    "preDeliver": "hooks/pre-deliver",
+    "preCompact": "hooks/pre-compact"
+  },
+  "tools": [
+    "agent_loop.initialize_task",
+    "agent_loop.record_evidence",
+    "agent_loop.mark_criterion",
+    "agent_loop.check_pre_deliver",
+    "agent_loop.emit_result_report"
+  ],
+  "templates": [
+    "templates/acceptance-spec.md",
+    "templates/task-state.md",
+    "templates/evidence-ledger.md",
+    "templates/failure-report.md",
+    "templates/delivery-report.md"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agent-loop/audit-event.schema.json",
+  "title": "AuditEvent",
+  "type": "object",
+  "required": ["id", "timestamp", "type", "summary"],
+  "properties": {
+    "id": { "type": "string" },
+    "timestamp": { "type": "string" },
+    "taskId": { "type": "string" },
+    "type": {
+      "enum": [
+        "tool.requested",
+        "tool.allowed",
+        "tool.denied",
+        "tool.completed",
+        "tool.failed",
+        "state.saved",
+        "verifier.registered",
+        "verifier.completed",
+        "verifier.failed"
+      ]
+    },
+    "summary": { "type": "string" },
+    "metadata": { "type": "object" }
+  },
+  "additionalProperties": false
+}

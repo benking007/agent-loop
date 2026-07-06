@@ -1,0 +1,19 @@
+{
+  "name": "agent-loop-runtime",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Reusable Agent Loop runtime guardrails: skill, hooks, schemas, evidence ledger, result statuses, and verifier contracts.",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "example": "node sdk/typescript/example-coding-agent.ts",
+    "test": "node --test sdk/typescript/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}

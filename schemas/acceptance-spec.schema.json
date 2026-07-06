@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agent-loop/acceptance-spec.schema.json",
+  "title": "AcceptanceSpec",
+  "type": "object",
+  "required": ["goal", "deliverable", "criteria"],
+  "properties": {
+    "goal": { "type": "string" },
+    "deliverable": { "type": "string" },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "in": { "type": "array", "items": { "type": "string" } },
+        "out": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "priority", "statement", "evidenceRequired", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "priority": { "enum": ["P0", "P1", "P2"] },
+          "statement": { "type": "string" },
+          "evidenceRequired": { "type": "array", "items": { "type": "string" } },
+          "status": { "enum": ["PENDING", "PASS", "WARNING", "FAIL", "BLOCKED"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "risks": { "type": "array", "items": { "type": "string" } },
+    "stopConditions": {
+      "type": "object",
+      "properties": {
+        "success": { "type": "string" },
+        "partial": { "type": "string" },
+        "unverified": { "type": "string" },
+        "blocked": { "type": "string" },
+        "limited": { "type": "string" },
+        "failed": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

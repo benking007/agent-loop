@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agent-loop/task-state.schema.json",
+  "title": "TaskState",
+  "type": "object",
+  "required": ["taskId", "status", "goal", "acceptanceSpec", "decisions", "evidence", "openFailures", "budget", "nextAction"],
+  "properties": {
+    "taskId": { "type": "string" },
+    "status": {
+      "enum": ["PLANNING", "ACTING", "JUDGING", "REPAIRING", "VERIFYING", "SUCCESS", "PARTIAL", "UNVERIFIED", "BLOCKED", "LIMITED", "FAILED"]
+    },
+    "goal": { "type": "string" },
+    "acceptanceSpec": { "$ref": "acceptance-spec.schema.json" },
+    "decisions": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "$ref": "evidence-ledger.schema.json#/properties/entries/items" } },
+    "openFailures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["criterionId", "expected", "actual", "evidence", "repairPlan", "attempts"],
+        "properties": {
+          "criterionId": { "type": "string" },
+          "expected": { "type": "string" },
+          "actual": { "type": "string" },
+          "evidence": { "type": "string" },
+          "likelyCause": { "type": "string" },
+          "repairPlan": { "type": "string" },
+          "attempts": { "type": "integer", "minimum": 0 },
+          "blocking": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": ["maxTurns", "turnsUsed", "maxRepairAttempts"],
+      "properties": {
+        "maxTurns": { "type": "integer", "minimum": 1 },
+        "turnsUsed": { "type": "integer", "minimum": 0 },
+        "maxRepairAttempts": { "type": "integer", "minimum": 0 },
+        "maxCost": { "type": "number", "minimum": 0 },
+        "costUsed": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "nextAction": { "type": "string" }
+  },
+  "additionalProperties": false
+}

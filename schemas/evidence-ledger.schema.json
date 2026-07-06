@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agent-loop/evidence-ledger.schema.json",
+  "title": "EvidenceLedger",
+  "type": "object",
+  "required": ["entries"],
+  "properties": {
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "timestamp", "source", "summary", "supports"],
+        "properties": {
+          "id": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "source": { "type": "string" },
+          "action": { "type": "string" },
+          "ok": { "type": "boolean" },
+          "summary": { "type": "string" },
+          "artifact": { "type": "string" },
+          "supports": { "type": "array", "items": { "type": "string" } },
+          "risk": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

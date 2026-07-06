@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agent-loop/tool-policy.schema.json",
+  "title": "ToolPolicy",
+  "type": "object",
+  "required": ["defaultDecision"],
+  "properties": {
+    "defaultDecision": { "enum": ["allow", "deny"] },
+    "categoryDecisions": {
+      "type": "object",
+      "properties": {
+        "READ": { "enum": ["allow", "deny", "approvalRequired"] },
+        "WRITE": { "enum": ["allow", "deny", "approvalRequired"] },
+        "EXECUTE": { "enum": ["allow", "deny", "approvalRequired"] },
+        "EXTERNAL_ACTION": { "enum": ["allow", "deny", "approvalRequired"] },
+        "DESTRUCTIVE": { "enum": ["allow", "deny", "approvalRequired"] }
+      },
+      "additionalProperties": false
+    },
+    "allowedTools": { "type": "array", "items": { "type": "string" } },
+    "deniedTools": { "type": "array", "items": { "type": "string" } },
+    "approvalRequiredTools": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

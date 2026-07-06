@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agent-loop/result-report.schema.json",
+  "title": "ResultReport",
+  "type": "object",
+  "required": ["status", "completed", "evidence", "verification", "remainingRisks"],
+  "properties": {
+    "status": { "enum": ["SUCCESS", "PARTIAL", "UNVERIFIED", "BLOCKED", "LIMITED", "FAILED"] },
+    "completed": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "verification": { "type": "array", "items": { "type": "string" } },
+    "remainingRisks": { "type": "array", "items": { "type": "string" } },
+    "nextStep": { "type": "string" }
+  },
+  "additionalProperties": false
+}
+
